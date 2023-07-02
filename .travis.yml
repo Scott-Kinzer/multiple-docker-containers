@@ -10,12 +10,12 @@ script:
   - docker run -e CI=true frontend-image npm run test
 
 after_success: 
-  - docker build -t multi-client ./client
-  - docker build -t multi-nginx ./nginx
-  - docker build -t multi-server ./server
-  - docker build -t multi-worker ./worker
+  - docker build -t karpiv/multi-client ./client
+  - docker build -t karpiv/multi-nginx ./nginx
+  - docker build -t karpiv/multi-server ./server
+  - docker build -t karpiv/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push multi-client
-  - docker push multi-nginx
-  - docker push multi-server
-  - docker push multi-worker
+  - docker push karpiv/multi-client
+  - docker push karpiv/multi-nginx
+  - docker push karpiv/multi-server
+  - docker push karpiv/multi-worker
